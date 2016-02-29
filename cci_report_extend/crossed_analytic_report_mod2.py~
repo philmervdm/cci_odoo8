@@ -1,0 +1,41 @@
+# -*- encoding: utf-8 -*-
+##############################################################################
+#
+#    OpenERP, Open Source Management Solution
+#    Copyright (C) 2004-2009 Tiny SPRL (<http://tiny.be>). All Rights Reserved
+#    $Id$
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+##############################################################################
+
+import time
+from openerp import models, fields, api, _
+
+class cci_analytic_cross_details2(models.Model):
+
+    _name='cci.analytic.cross.details2'
+    _description = "CCI Account Analytic Line Report 2012"
+
+    name = fields.Char('Name', size=64, readonly=True, select=True)
+    product_id = fields.Many2one('product.product','Product', readonly=True, select=True)
+    gl_account_id = fields.Many2one('account.account','Account', readonly=True, select=True)
+    move_id = fields.Many2one('account.move','Move', readonly=True, select=True)
+    partner_id = fields.Many2one('res.partner','Partner', readonly=True, select=True)
+    period_id = fields.Many2one('account.period','Period', readonly=True, select=True)
+    account1_id = fields.Many2one('account.analytic.account','Account1')
+    account2_id = fields.Many2one('account.analytic.account','Account2')
+    amount = fields.Float('Amount')
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

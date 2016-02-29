@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" ?>
+<openerp>
+    <data>
+        <record id="view_partner_activsector_form" model="ir.ui.view">
+            <field name="name">res.partner.activsector.form</field>
+            <field name="model">res.partner.activsector</field>
+            <field name="arch" type="xml">
+                <form string="Partner Activity Sector">
+                    <group>
+                        <group>
+                             <field name="code"/>
+                             <field name="directly"/>
+                             <field name="parent_id"/>
+                       </group>
+                       <group>
+                             <field name="name"/>
+                             <field name="active"/>
+                       </group>
+					</group>
+                </form>
+            </field>
+        </record>
+        <record id="view_partner_category_tree" model="ir.ui.view">
+            <field name="name">res.partner.activsector.tree</field>
+            <field name="model">res.partner.activsector</field>
+            <field name="arch" type="xml">
+                <tree string="Partner Activity Sector">
+                    <field name="code"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+		<record id="view_partner_activsector_filter" model="ir.ui.view">
+            <field name="name">res.partner.activsector.select</field>
+            <field name="model">res.partner.activsector</field>
+            <field name="arch" type="xml">
+                <search string="Search Active Sector">
+                    <field name="code" />
+                    <field name="directly" />
+                    <field name="name" />
+                    <field name="active" />
+               </search>
+            </field>
+        </record>
+
+        <record id="action_partner_activsector_form" model="ir.actions.act_window">
+            <field name="name">Partner Activity Sector</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner.activsector</field>
+            <field name="view_type">form</field>
+			<field name="search_view_id" ref="view_partner_activsector_filter" />
+        </record>
+        <menuitem action="action_partner_activsector_form" id="menu_partner_activsector_form" parent="base.menu_base_config"/>
+
+    	<!-- RES.PARTNER.ADDRESS -->
+	    <record model="ir.ui.view" id="view_activsector_address">
+		    <field name="name">Address</field>
+		    <field name="model">res.partner</field>
+		    <field name="inherit_id" ref="base.view_partner_form"/>
+		    <field name="arch" type="xml">
+			    <data>
+					<xpath expr="//field[@name='child_ids']/form/sheet/group" position="after">
+						<group string="Activity Sector" colspan="4">
+				            <field name="sector1"/>
+				            <field name="sector2"/>
+				            <field name="sector3"/>
+						</group>
+			        </xpath>
+			    </data>
+		    </field>
+	    </record>
+
+    </data>
+</openerp>
